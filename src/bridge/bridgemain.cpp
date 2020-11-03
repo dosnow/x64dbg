@@ -92,6 +92,7 @@ BRIDGE_IMPEXP const wchar_t* BridgeInit()
     LOADEXPORT(_dbg_dbgcmddirectexec);
     LOADEXPORT(_dbg_getbranchdestination);
     LOADEXPORT(_dbg_sendmessage);
+    LOADEXPORT(_dbg_statusnameget);
     return 0;
 }
 
@@ -424,6 +425,15 @@ BRIDGE_IMPEXP bool DbgGetModuleAt(duint addr, char* text)
     if(!_dbg_addrinfoget(addr, SEG_DEFAULT, &info))
         return false;
     strcpy_s(text, MAX_MODULE_SIZE, info.module);
+    return true;
+}
+
+BRIDGE_IMPEXP bool DbgGetStatusCode(duint value, char* text)
+{
+    if(!text || !value)
+        return false;
+    if(!_dbg_statusnameget(value, text))
+        return false;
     return true;
 }
 
