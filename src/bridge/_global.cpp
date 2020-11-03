@@ -25,3 +25,4 @@ DBGGETBPLIST _dbg_getbplist;
 DBGDBGCMDEXECDIRECT _dbg_dbgcmddirectexec;
 DBGGETBRANCHDESTINATION _dbg_getbranchdestination;
 DBGSENDMESSAGE _dbg_sendmessage;
+DBGSTATUSNAMEGET _dbg_statusnameget;
