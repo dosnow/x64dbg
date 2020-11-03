@@ -36,6 +36,7 @@ typedef int (*DBGGETBPLIST)(BPXTYPE type, BPMAP* bplist);
 typedef bool (*DBGDBGCMDEXECDIRECT)(const char* cmd);
 typedef duint(*DBGGETBRANCHDESTINATION)(duint addr);
 typedef duint(*DBGSENDMESSAGE)(DBGMSG type, void* param1, void* param2);
+typedef bool(*DBGSTATUSNAMEGET)(duint value, char* name);
 
 //DBG functions
 extern DBGDBGINIT _dbg_dbginit;
@@ -59,5 +60,6 @@ extern DBGGETBPLIST _dbg_getbplist;
 extern DBGDBGCMDEXECDIRECT _dbg_dbgcmddirectexec;
 extern DBGGETBRANCHDESTINATION _dbg_getbranchdestination;
 extern DBGSENDMESSAGE _dbg_sendmessage;
+extern DBGSTATUSNAMEGET _dbg_statusnameget;
 
 #endif // _GLOBAL_H

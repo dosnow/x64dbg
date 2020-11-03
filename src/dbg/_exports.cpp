@@ -36,6 +36,7 @@
 #include "recursiveanalysis.h"
 #include "dbghelp_safe.h"
 #include "symcache.h"
+#include "exception.h"
 
 static bool bOnlyCipAutoComments = false;
 static bool bNoSourceLineAutoComments = false;
@@ -285,6 +286,13 @@ static bool getLabel(duint addr, char* label, bool noFuncOffset)
         }
     }
     return retval;
+}
+
+extern "C" DLL_EXPORT bool _dbg_statusnameget(duint value, char* name)
+{
+    auto status = NtStatusCodeToName(value);
+    memcpy_s(name, status.size(), status.c_str(), status.size());
+    return !status.empty();
 }
 
 extern "C" DLL_EXPORT bool _dbg_addrinfoget(duint addr, SEGMENTREG segment, BRIDGE_ADDRINFO* addrinfo)
